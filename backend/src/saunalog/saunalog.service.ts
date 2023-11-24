@@ -13,8 +13,8 @@ export class SaunalogService {
     });
   }
 
-  async findOne(id: number) {
-    const log = await this.SaunalogRepository.findOne(id);
+  async findOne(userId: number) {
+    const log = await this.SaunalogRepository.findOne({where: { id: userId } });
     return log;
   }
 

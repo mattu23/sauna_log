@@ -21,7 +21,7 @@ export class AuthService {
   //ユーザーログイン
   async signIn(credentialsDto: CredentialsDTO, req: Request): Promise<{ message: string }> {
     const { email, password } = credentialsDto;
-    const user = await this.userRepository.findOne({ email });
+    const user = await this.userRepository.findOne({ where: { email } });
     //パスワードが一致したらセッションにユーザーIDを保存
     if (user && (await bcrypt.compare(password, user.password))) {
       req.session.userId = user.id;
@@ -33,7 +33,7 @@ export class AuthService {
 
   //ログインユーザーの特定
   async getUserById(userId: number): Promise<User> {
-    return await this.userRepository.findOne(userId);
+    return await this.userRepository.findOne({id: userId });
   }
 
   //ログアウト
