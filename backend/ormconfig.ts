@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const options = {
   type: 'mysql',
-  host: process.env.DATABASE_HOST, // 環境変数がない場合はローカルホストをデフォルト値とする
+  host: process.env.DATABASE_HOST, 
   port: parseInt(process.env.DATABASE_PORT, 10),
   username: process.env.DATABASE_USER, 
   password: process.env.DATABASE_PASSWORD, 
